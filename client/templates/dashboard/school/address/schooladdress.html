@@ -1,0 +1,102 @@
+<template name="schooladdress">
+{{#if currentUser}}
+{{#if isInRole 'admin,super-admin' 'school-admin'}}
+
+	<form name="addschooladdress" id="addschooladdress" class="addschooladdress">
+		<p style="margin-top: -50px;"><h4><strong> Address / Contact Details</strong></h4><h5></h5></p>
+		<div class="row uniform">
+			<div class="6u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="selectschool" id="selectschool">
+						{{#if OnlyUsersSchool}}	
+						<option value="">- Select School -</option>
+							{{#each OnlyUsersSchool}}
+								<option value="{{_id}}">{{addschoolname}}</option>
+							{{/each}}
+						{{/if}}
+					</select>
+				</div>
+			</div>
+			<div class="3u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="unit" id="unit">
+						<option value="">- Address Unit -</option>
+						<option value="Head Office">Head Office</option>
+						<option value="Regional Address">Regional Address</option>
+						<option value="Local Address">Local Address</option>
+						<option value="Not Applicable">Not Applicable</option>
+					</select>
+				</div>
+			</div>
+			<div class="3u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="branches" id="branches">
+						<option value="">- Branches Available -</option>
+						<option value="1">1 - 10</option>
+						<option value="1">11 - 20</option>
+						<option value="1">21 - 20</option>
+						<option value="1">Not Applicable</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="6u 12u$(small)">
+				<input id="email" name="email" type="email" placeholder="School email address" value="" required="true" />
+			</div>
+			<div class="3u 12u$(xsmall)">
+				<input type="tel" name="mobile" id="mobile" value="" placeholder="802 347 2436" style="width: 200px;" required="true"/>
+				<input id="hidden" type="hidden" name="phone-full">
+			</div>
+			<div class="3u$ 12u$(xsmall)">
+			<input type="tel" name="phone" id="phone" value="" placeholder="802 347 2436" style="width: 200px;" />
+			</div>
+			<div class="6u 12u$(xsmall)">
+			<input id="num_street" name="num_street" type="text" placeholder="Type in your house number and street" value="" required="true" minlength="10" maxlength="100" />
+			</div>
+			<div class="6u$ 12u$(xsmall)">
+			<input id="schoolwebiste" name="schoolwebiste" type="text" placeholder="Type in the school webiste (if available)" value="" minlength="10" maxlength="200" />
+			</div>
+			
+			<div class="6u$ 12u$(xsmall)">
+           <input id="geocomplete" name="geocomplete" type="text" placeholder="Type in the school town/province name" value="" required="true" />
+               <input name="name" type="hidden" value="">
+                <input name="point_of_interest" type="hidden" value="">
+                <input name="lat" type="hidden" value="">
+                <input name="lng" type="hidden" value="">
+                <input name="location" type="hidden" value="">
+                <input name="location_type" type="hidden" value="">
+                <input name="formatted_address" type="hidden" value="">
+                <input name="bounds" type="hidden" value="">
+                <input name="viewport" type="hidden" value="">
+                <input name="route" type="hidden" value="">
+                <input name="street_number" type="hidden" value="">
+                <input name="postal_code" type="hidden" value="">
+                <input name="locality" type="hidden" value="">
+                <input name="sublocality" type="hidden" value="">
+                <input name="country" type="hidden" value="">
+                <input name="country_short" type="hidden" value="">
+                <input name="administrative_area_level_1" type="hidden" value="">
+                <input name="place_id" type="hidden" value="">
+                <input name="id" type="hidden" value="">
+                <input name="reference" type="hidden" value="">
+                <input name="url" type="hidden" value="">
+                <input name="website" type="hidden" value="">
+            </div>
+            
+			<div class="12u$">
+				<ul class="actions">
+					<li><input type="submit" value="Add  Address" class="special" /></li>
+					<li><input type="reset" value="Reset" /></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA55ihs_QPBpO5rSV4DoV1TJ0FX4ofL8zk&libraries=places"></script>
+<script src="/js/jquery.geocomplete.js"></script>
+{{else}}
+  {{accessDenied}}
+{{/if}}
+  {{else}}
+  {{notloggedIn}}
+	{{/if}}
+</template>

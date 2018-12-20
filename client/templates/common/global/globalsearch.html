@@ -1,0 +1,80 @@
+<template name="globalsearch">
+  <div id="search-wrap">
+      <div class="black searchbar" style="color: black;">
+        {{> EasySearch.Input index=index attributes=inputAttributes }}
+      </div>
+      {{#EasySearch.IfInputEmpty index=index}}
+        <div class="padded examples black">For example "Yo Mama"</div>
+      {{else}}
+        {{#if resultsCount}}
+          <div class="padded count-results black" style="color: black;"> {{ resultsCount }} results found</div>
+        {{/if}}
+      {{/EasySearch.IfInputEmpty}}
+
+      {{#EasySearch.IfSearching index=index }}
+        <div>Searching</div>
+      {{/EasySearch.IfSearching }}
+
+      <ol class="leaderboard">
+        {{#EasySearch.Each index=index}}
+          {{> StudentGlobal}}
+        {{/EasySearch.Each}}
+
+        {{#EasySearch.Each index=index}}
+          {{> ModuleGlobal}}
+        {{/EasySearch.Each}}
+
+        {{#EasySearch.Each index=index}}
+          {{> CourseGlobal}}
+        {{/EasySearch.Each}}
+
+        {{#EasySearch.Each index=index}}
+          {{> SchoolGlobal}}
+        {{/EasySearch.Each}}
+      </ol>
+
+      {{#EasySearch.IfNoresults index=index}}
+        <div class="padded no-results black">No results found</div>
+        {{else}}
+      {{/EasySearch.IfNoresults}}
+
+      {{> EasySearch.Pagination index=index maxPages=10 }}
+      {{! > EasySearch.LoadMore index=index}}
+
+      {{#if showMore}}
+          {{> EasySearch.Input name="mini-index" index=index attributes=inputAttributes }}
+        <ul>
+          {{#EasySearch.Each name="mini-index" index=index }}
+            <li>{{firstname}}</li>
+          {{/EasySearch.Each}}
+        </ul>
+      {{/if}}
+    </div>
+</template>
+
+<template name="StudentGlobal">
+  <li class="user black {{selected}}" id="user-link">
+    <span class="name">{{selectedStudentName}}</span>
+    {{#if selected}}
+      <div>
+        <span class="posy blue"> {{firstname}} </span>
+      </div>
+        <br>
+      <div>
+        <span class="author"> Author: {{lastname}} </span>
+      </div>
+    {{/if}}
+  </li>
+</template>
+
+<template name="ModuleGlobal">
+  
+</template>
+
+<template name="CourseGlobal">
+  
+</template>
+
+<template name="SchoolGlobal">
+  
+</template>

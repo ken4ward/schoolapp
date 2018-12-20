@@ -1,0 +1,64 @@
+<template name="studentprofile">
+{{#if currentUser}}
+	<form name="studentupdate" id="studentupdate" class="studentupdate">
+		<p style="margin-top: -50px;"><h4><strong> Update profile & Picture</strong></h4><h5></h5></p>
+		<div class="row uniform">
+			<div class="6u 12u$(small)">
+				<input id="firstname" name="firstname" type="text" placeholder="Middle name" required="true" minlength="2" maxlength="30" />
+			</div>
+			<div class="6u$ 12u$(small)">
+				<input id="lastname" name="lastname" type="text" placeholder="Nick name" required="true" minlength="2" maxlength="30" />
+			</div>
+			<div class="6u 12u$(xsmall)">
+			<input type="tel" name="mobile" id="mobile" value="" placeholder="802 347 2436" style="width: 500px;" required="true" />
+			</div>
+			<div class="6u$ 12u$(xsmall)">
+			<input id="num_street" name="num_street" type="text" placeholder="Type in your house number and street" value="" required="true" minlength="10" maxlength="100" />
+			</div>
+			<div class="6u 12u$(xsmall)">
+			<input id="facebook" name="facebook" type="url" placeholder="Facebook address" value="" />
+			</div>
+			
+			<div class="6u$ 12u$(xsmall)">
+           <input id="geocomplete" name="geocomplete" type="text" placeholder="Type in the school town/province name" value="" required="true" />
+               <input name="name" type="hidden" value="">
+                <input name="point_of_interest" type="hidden" value="">
+                <input name="lat" type="hidden" value="">
+                <input name="lng" type="hidden" value="">
+                <input name="location" type="hidden" value="">
+                <input name="location_type" type="hidden" value="">
+                <input name="formatted_address" type="hidden" value="">
+                <input name="bounds" type="hidden" value="">
+                <input name="viewport" type="hidden" value="">
+                <input name="route" type="hidden" value="">
+                <input name="street_number" type="hidden" value="">
+                <input name="postal_code" type="hidden" value="">
+                <input name="locality" type="hidden" value="">
+                <input name="sublocality" type="hidden" value="">
+                <input name="country" type="hidden" value="">
+                <input name="country_short" type="hidden" value="">
+                <input name="administrative_area_level_1" type="hidden" value="">
+                <input name="place_id" type="hidden" value="">
+                <input name="id" type="hidden" value="">
+                <input name="reference" type="hidden" value="">
+                <input name="url" type="hidden" value="">
+                <input name="website" type="hidden" value="">
+            </div>
+            
+			<div class="6u 12u$(xsmall)">
+				<ul class="actions">
+					<li><input type="submit" value="Update" class="special" /></li>
+					<li><input type="reset" value="Reset" /></li>
+				</ul>
+			</div>
+			<div class="6u$ 12u$(small)">
+	            <form class="edit-logo" enctype="multipart/form-data">
+	                <input id="file-upload" name="studentpic" type="file" style="width: 100%;" />
+	            </form>
+			</div>
+		</div>
+	</form>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA55ihs_QPBpO5rSV4DoV1TJ0FX4ofL8zk&libraries=places"></script>
+	<script src="/js/jquery.geocomplete.js"></script>
+	{{/if}}
+</template>

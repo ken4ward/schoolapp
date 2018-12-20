@@ -1,0 +1,17 @@
+<template name="sidebarschool">
+	<!-- Wrapper -->
+	{{> bertAlert}}
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main" style="margin-left: -350px;">
+						<div class="inner">
+							{{> headertheme }}
+							<section>
+								{{> Template.dynamic template=sidebars}}
+							</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					{{> schoolsidebar }} 
+			</div>
+</template>

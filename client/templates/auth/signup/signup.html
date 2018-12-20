@@ -1,0 +1,70 @@
+<template name="signup">
+
+	<div class="modal fade" >
+        <div class="modal-dialog" id="signupModal" name="signupModal">
+            
+            <div class="modal-content">
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-header">
+                    <h4 class="modal-title">SIGN UP</h4>
+                </div>
+                </div>
+                <form name="signup" id="signup" class="signup">
+             <div style="margin-left: 100px;margin-right: 100px;">  
+                 <div class="modal-body">
+                    <div class="form-group">
+                <input type="text" name="username" id="username" class="form-control formz" minlength="5" maxlength="15" placeholder="Enter username" style="border-style: solid;border-color: #ff6666; border-width: 1px;" required="true">
+                    </div>
+                    <div class="form-group">
+                <input type="email" name="email" id="email" class="form-control formz" placeholder="Enter email" style="border-style: solid;border-color: #ff6666; border-width: 1px;" required="true">
+                <span id="validemail"></span>
+                    </div>
+                    <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control formz" minlength="6" maxlength="30" placeholder="Enter password" style="border-style: solid;border-color: #ff6666; border-width: 1px;" required="true">
+                    </div>
+                    <div class="form-group">
+            <input type="password" name="cpassword" id="cpassword" class="form-control formz" minlength="6" maxlength="30"  placeholder="Confirm password" style="border-style: solid;border-color: #ff6666; border-width: 0.5px;" required="true">
+                    </div>
+            <div class="12u 12u$(small)">
+                <input type="checkbox" id="agree" name="agree" checked required="true"><label for="agree"><h5><a href="/terms">News Letter | Terms & Conditions</a></h5> </label>
+            </div>
+            
+                </div>
+                </div>
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-footer" >
+                    <button type="button" class="button signins" name="signins" id="signins">Sign In</button>
+                    <button type="submit" class="special" name="signups" id="signups">Sign Up<i class="fa fa-spinner" aria-hidden="true" style="display:none"></i></button>
+                    <button type="button" class="button" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $('#username').keydown(function (e) {
+               var k = e.which;
+                var ok = k >= 65 && k <= 90 || // A-Z
+                    k >= 96 && k <= 105 || // a-z
+                    k >= 35 && k <= 40 || // arrows
+                    k == 8 || // Backspaces
+                    k >= 48 && k <= 57; // 0-9
+
+                if (!ok){
+                    e.preventDefault();
+                }        
+            });
+        });
+        $(function () {
+            $('#email').on('keyup', function(){
+                var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value) && this.value.length;
+                 $('#validemail').html('It\'s'+ (valid?'':' not') +' valid');
+
+            });
+        })
+
+    </script>
+</template>

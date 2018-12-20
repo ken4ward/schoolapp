@@ -1,0 +1,111 @@
+<template name="modules">
+{{#if currentUser}}
+{{#if isInRole 'admin,super-admin' 'school-admin'}}
+<div class="row">
+    <div class="12u$">
+      <!-- search -->
+  <div >
+  <div class="row" style="margin-left: -50px; margin-top: -50px;">
+    <div class="black searchbar col-md-10">{{> EasySearch.Input index=index attributes=inputAttributes }}</div>
+      <div class="2u 12u$(small)">
+        <div class="select-wrapper">
+          <select name="performaction" id="performaction">
+            <option value="">- Actions -</option>
+            <option value="addnewschool">NEW SCHOOL</option>
+            <option value="addmoduletoschool">ADD TO SCHOOL</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  <!-- search -->
+    {{#EasySearch.IfInputEmpty index=index }}
+      <!--<div class="padded examples black">For example "Yo Mamma"</div>-->
+    {{else}}
+      {{#if resultCount}}
+        <div class="padded count-results black">{{resultCount}} results found.</div>
+      {{/if}}
+    {{/EasySearch.IfInputEmpty}}
+
+    {{#EasySearch.IfSearching index=index }}
+      <div>Searching</div>
+    {{/EasySearch.IfSearching}}
+      <div class="3u$ 12u$(small)">
+        <input type="checkbox" id="ckbCheckAll" name="ckbCheckAll"><label for="ckbCheckAll">Select All</label>
+      </div>
+    <ol class="leaderboard">
+      {{#EasySearch.Each index=index }}
+        {{> ModulesUser}}
+      {{/EasySearch.Each}}  
+    </ol>
+
+    {{#EasySearch.IfNoResults index=index }}
+      <div class="padded no-results black">No results found</div>
+    {{else}}
+    {{/EasySearch.IfNoResults}}
+
+    {{> EasySearch.Pagination index=index maxPages=10 }}
+    {{! > EasySearch.LoadMore index=index}}
+
+    {{#if showMore}}
+      {{> EasySearch.Input name="mini-index" index=index attributes=inputAttributes }}
+      <ul>
+        {{#EasySearch.Each name="mini-index" index=index}}
+          <li>{{modulename}}</li>
+        {{/EasySearch.Each}}
+      </ul>
+
+    {{/if}}
+    <!-- Easy Search -->
+  </div>
+  </div>
+  </div>
+  <!-- End search -->
+{{else}}
+      {{accessDenied}}
+    {{/if}}
+    {{else}}
+    {{notloggedIn}}
+{{/if}}
+</template>
+
+<template name="ModulesUser">
+  {{#if currentUser}}
+{{#if isInRole 'admin,super-admin' 'school-admin'}}
+
+   <div class="container" style="width: 100%; margin-left: -60px;">
+      <ul class="list-group">
+            <li class="list-group-item" style="font-size: 12px; width: 110%; margin-left: 10px; max-height: 40px; margin-bottom: -15px;">
+              <input type="hidden" value="{{_id}}" name="studentId">
+                <input type="checkbox" id="{{_id}}" name="eachmodules" value="{{_id}}" class="checkBoxClass">
+                <label for="{{_id}}">
+                  {{#if imagepath }}
+                    <a class="pull-left" href="/modules/{{slug}}" target="_parent">
+                      <img alt="image" class="img-responsive" src="{{imagepath}}" style="width: 20px; height: 20px; object-fit: contain;"></a>
+                  {{else}}
+                      <a class="pull-left" href="/modules/{{slug}}" target="_parent">
+                      <img alt="image" class="img-responsive" src="/images/library.png" style="width: 20px; height: 20px; object-fit: contain; margin-right: 5px;"></a>
+                  {{/if}}
+
+                  <a href="/modules/{{slug}}" target="_parent"><strong>{{modulename}}</strong></a> | <em>{{trimString moduledescription 0 110}}</em></label><i class="fa fa-trash fa-2x delete" aria-hidden="true"></i>
+
+            </li>
+      </ul>
+    </div>
+  {{/if}}
+  {{/if}}
+
+  <script type="text/javascript">
+  $(document).ready(function () {
+    $("#ckbCheckAll").click(function () {
+        $(".checkBoxClass").prop('checked', $(this).prop('checked'));
+    });
+    
+    $(".checkBoxClass").change(function(){
+        if (!$(this).prop("checked")){
+            $("#ckbCheckAll").prop("checked",false);
+        }
+    });
+});
+</script>
+</template>

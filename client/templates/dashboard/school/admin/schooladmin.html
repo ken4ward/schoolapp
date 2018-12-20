@@ -1,0 +1,103 @@
+<template name="schooladmin">
+	{{#if currentUser}}
+{{#if isInRole 'admin,super-admin' 'school-admin'}}
+
+	<form name="schooladmin" id="schooladmin" class="schooladmin">
+		<p style="margin-top: -50px;"><h4><strong> School Admin Details</strong></h4><h5></h5></p>
+		<div class="row uniform">
+			<div class="6u 12u$(small)">
+				<input id="firstname" name="firstname" type="text" placeholder="Admin First Name" value="" required="true" minlength="2" maxlength="30" />
+			</div>
+			<div class="6u 12u$(small)">
+				<input id="lastname" name="lastname" type="text" placeholder="Admin Last Name" value="" required="true" minlength="2" maxlength="30" />
+			</div>
+			
+			<div class="3u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="relationship" id="relationship" required="true">
+						<option value="">- Relationship -</option>
+						<option value="HeadMaster">Head Master</option>
+						<option value="HeadMistress">Head Mistress</option>
+						<option value="HeadTeacher">Head Teacher</option>
+						<option value="Principal">Principal </option>
+						<option value="VicePrincipal">Vice Principal</option>
+						<option value="Proprietor">Proprietor</option>
+						<option value="Prorpietress">Prorpietress</option>
+						<option value="Others">Others</option>
+						<option value="NotApplicable">Not Applicable</option>
+					</select>
+				</div>
+			</div>
+			<div class="3u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="worksat" id="worksat" required="true">
+						<option value="">- Works At -</option>
+						<option value="HeadOffice">Head Office</option>
+						<option value="Branch">Branch</option>
+						<option value="Others">Others</option>
+						<option value="NotApplicable">Not Applicable</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="6u 12u$(small)">
+				<input id="email" name="email" type="email" placeholder="Admin email address" value="" required="true" />
+			</div>
+			<div class="6u 12u$(xsmall)">
+			<input type="url" name="social" id="social" value="" placeholder="https://facebook.com/ken4ward" />
+			</div>
+			<div class="3u 12u$(xsmall)">
+				<input type="tel" name="mobile" id="mobile" value="" placeholder="802 347 2436" style="width: 200px;" required="true"/>
+				<input id="hidden" type="hidden" name="phone-full">
+			</div>
+			<div class="3u$ 12u$(xsmall)">
+			<input type="tel" name="phone" id="phone" value="" placeholder="802 347 2436" style="width: 200px;" required="true" />
+			</div>
+			
+			<div class="6u 12u$(xsmall)">
+			<input id="num_street" name="num_street" type="text" placeholder="Type in your house number and street" value="" required="true" minlength="10" maxlength="100" />
+			</div>
+			
+			<div class="6u$ 12u$(xsmall)">
+           <input id="geocomplete" name="geocomplete" type="text" placeholder="Type in the admin town/province name" value="" required="true" />
+               <input name="name" type="hidden" value="">
+                <input name="point_of_interest" type="hidden" value="">
+                <input name="lat" type="hidden" value="">
+                <input name="lng" type="hidden" value="">
+                <input name="location" type="hidden" value="">
+                <input name="location_type" type="hidden" value="">
+                <input name="formatted_address" type="hidden" value="">
+                <input name="bounds" type="hidden" value="">
+                <input name="viewport" type="hidden" value="">
+                <input name="route" type="hidden" value="">
+                <input name="street_number" type="hidden" value="">
+                <input name="postal_code" type="hidden" value="">
+                <input name="locality" type="hidden" value="">
+                <input name="sublocality" type="hidden" value="">
+                <input name="country" type="hidden" value="">
+                <input name="country_short" type="hidden" value="">
+                <input name="administrative_area_level_1" type="hidden" value="">
+                <input name="place_id" type="hidden" value="">
+                <input name="id" type="hidden" value="">
+                <input name="reference" type="hidden" value="">
+                <input name="url" type="hidden" value="">
+                <input name="website" type="hidden" value="">
+            </div>
+            
+			<div class="12u$">
+				<ul class="actions">
+					<li><input type="submit" value="Add  Admin Details" class="special" /></li>
+					<li><input type="reset" value="Reset" /></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA55ihs_QPBpO5rSV4DoV1TJ0FX4ofL8zk&libraries=places"></script>
+<script src="/js/jquery.geocomplete.js"></script>
+{{else}}
+  {{accessDenied}}
+{{/if}}
+  {{else}}
+  {{notloggedIn}}
+	{{/if}}
+</template>

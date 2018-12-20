@@ -1,0 +1,82 @@
+<template name="school">
+	{{#if currentUser}}
+  {{#if isInRole 'admin,super-admin' 'school-admin'}}
+  <div class="page-header clearfix">
+    <h4 class="pull-left">Schools</h4>
+    <div class="pull-right">
+      <button style="margin-right: 10px;" class="special" id="add-module-to-school" name="add-module-to-school">ADD MODULE TO SCHOOL</button>
+    </div>
+  </div>
+
+  <!-- search -->
+  <div id="search-wrap">
+    <!-- Easy Search -->
+    <div class="black searchbar">
+      {{> EasySearch.Input index=index attributes=inputAttributes }}
+    </div>
+
+    {{#EasySearch.IfInputEmpty index=index }}
+      <div class="padded examples black">For example "Yo Mamma"</div>
+    {{else}}
+      {{#if resultCount}}
+        <div class="padded count-results black">{{resultCount}} results found.</div>
+      {{/if}}
+    {{/EasySearch.IfInputEmpty}}
+
+    {{#EasySearch.IfSearching index=index }}
+      <div>Searching</div>
+    {{/EasySearch.IfSearching}}
+
+    <ol class="leaderboard">
+      {{#EasySearch.Each index=index }}
+        {{> UserSchool}}
+      {{/EasySearch.Each}}  
+    </ol>
+
+    {{#EasySearch.IfNoResults index=index }}
+      <div class="padded no-results black">No results found</div>
+    {{else}}
+    {{/EasySearch.IfNoResults}}
+
+    {{> EasySearch.Pagination index=index maxPages=10 }}
+    {{! > EasySearch.LoadMore index=index}}
+
+    {{#if showMore}}
+      {{> EasySearch.Input name="mini-index" index=index attributes=inputAttributes }}
+      <ul>
+        {{#EasySearch.Each name="mini-index" index=index}}
+          <li>{{name}}</li>
+        {{/EasySearch.Each}}
+      </ul>
+
+    {{/if}}
+    <!-- Easy Search -->
+  </div>
+  <!-- End search -->
+  {{else}}
+  {{accessDenied}}
+{{/if}}
+  {{else}}
+  {{notloggedIn}}
+{{/if}}
+</template>
+
+<template name="UserSchool">
+  <!--<li class="user black {{selected}}" id="user-link">-->
+   <li class="list-group-item clearfix checkbox black">
+          <span class="pull-left">{{modulename}} by <strong>{{userId}}</strong></span>
+          <span class="pull-right"><label><input type="checkbox" name="eachmodules" value="{{_id}}">Add to School</label></span>
+        </li>
+    <!--{{#if selected}}
+    <div class="jokeInfo">
+      <div>
+        <span class="posy blue">{{about}}</span>
+      </div>
+        <br>
+      <div>
+        <span class="author">Author: {{author}}</span>
+      </div>
+    </div>
+    {{/if}}
+  </li>-->
+</template>

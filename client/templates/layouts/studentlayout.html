@@ -1,0 +1,17 @@
+<template name="studentlayout">
+	<!-- Wrapper -->
+	{{> bertAlert}}
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main" style="margin-left: -350px;">
+						<div class="inner">
+							{{> headertheme }}
+							<section>
+								{{> Template.dynamic template=studentrender}}
+							</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					{{> studentsidebar }} 
+			</div>
+</template>

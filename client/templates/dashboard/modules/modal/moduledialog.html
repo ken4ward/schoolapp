@@ -1,0 +1,41 @@
+
+<template name="moduledialog">
+    {{#if currentUser}}
+    {{#if isInRole 'admin,super-admin' 'school-admin'}}
+    
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create / Select Module</h4>
+                </div>
+                <div class="modal-body"> 
+                	
+                	<section>
+                        <div>
+                            <div style="margin-left: 13px; margin-bottom: -10px;"><h5><strong>ADD TO SELECTED SCHOOL</strong></h5></div>
+                            <form name="selectedschool" class="selectedschool" id="selectedschool">
+                                <div class="container" style="width: 100%; overflow-y: scroll; height:80%;">
+                                  <ul class="list-group">
+                                    {{#each OnlyUsersSchool}}
+                                        <li class="list-group-item" style="font-size: 12px; margin-bottom: -10px;">
+                                            <input type="radio" id="{{_id}}" name="schools" value="{{_id}}">
+                                            <label for="{{_id}}"><strong>{{addschoolname}}</strong>, <em>{{trimString geocomplete 0 45}}</em></label>
+                                        </li>
+                                    {{/each}}
+                                  </ul>
+                                </div> 
+                            </form>
+                        </div>   
+                    </section>  
+                </div>
+                <div class="modal-footer">
+                    <button name="addmodule" id="addmodule" class="special">ADD MODULE</button>
+                    <button type="button" class="button" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/if}}
+</template>

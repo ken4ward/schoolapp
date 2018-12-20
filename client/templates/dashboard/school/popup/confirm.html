@@ -1,0 +1,29 @@
+<template name="confirm">
+{{#if currentUser}}
+	<div class="modal fade" >
+        <div class="modal-dialog" id="confirmModal" name="confirmModal">
+
+            <div class="modal-content">
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-header">
+                    <h4 class="modal-title">SIGN UP</h4>
+                </div>
+                </div>
+                <form name="signup" id="signup" class="signup">
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-bodies">
+                 	<p><h5>Do you want to conitue filling school information?</h5></p>
+                </div>
+                </div>
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-footer" >
+                    <button type="button" class="button continue" name="continue" id="continue">Continue</button>
+                    <button type="button" class="button gotoschoolpage" name="gotoschoolpage" id="gotoschoolpage">Go to school page</button>
+                </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{{/if}}
+</template>

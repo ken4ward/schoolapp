@@ -1,0 +1,9 @@
+<template name="moduleschool">
+	{{#if currentUser}}
+		{{#if Template.subscriptionsReady }}
+			{{#each myGetSchoolId}}
+			<span><div> {{myGetSchoolId}} </div></span>
+			{{/each}}
+		{{/if}}
+	{{/if}}
+</template>

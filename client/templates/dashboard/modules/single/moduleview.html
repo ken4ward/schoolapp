@@ -1,0 +1,124 @@
+<template name="moduleview">
+	
+	{{#if currentUser}}
+	{{#if Template.subscriptionsReady }}
+	
+	<div class="row uniform" style="margin-top: -90px;">
+		<div class="container-pad" id="property-listings">
+		
+            <div class="row">
+            	<main class="tab-main">
+            		<div class="row">
+            		{{#with singleModule}}
+						<div class="col-md-7">
+							<input type="hidden" name="moduleId" id="moduleId" value="{{singleModule._id}}">
+							<a href="#"><h2><i class="fa fa-graduation-cap" aria-hidden="true">{{singleModule.modulename}}</i></h2> </a> 
+						</div>
+						<!--<div class="col-md-1">
+							<a href="#"><h5>({{singleModule.addconventional}}) </h5> </a>
+						</div> -->
+						<!--<div class="col-md-1">
+							<a href="#"><h3><i id="deleteschool" name="deleteschool" class="fa fa-trash fa-2x" aria-hidden="true"></i></h3> </a>
+						</div> 
+						
+						<div class="col-md-1">
+							<a href="#"><h3><i id="editschool" name="editschool" value="singleModule._id" class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></h3> </a>
+						</div>
+						<div class="col-md-1">
+							<a href="#"><h3><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></h3> </a>	
+						</div>
+						<div class="col-md-1">
+							<a href="#"><h3><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></h3> </a>
+						</div>-->
+						{{/with}}
+					</div>
+					
+
+		<input  class="tab-input" id="tab1" type="radio" name="tabs" checked>
+	  <label class="tab-label" for="tab1">DETAILS</label>
+	    
+	  <input class="tab-input" id="tab2" type="radio" name="tabs">
+	  <label  class="tab-label" for="tab2">COURSES</label>
+	    
+	  <input class="tab-input" id="tab3" type="radio" name="tabs">
+	  <label class="tab-label" for="tab3">STUDENTS</label>
+
+    <input class="tab-input" id="tab4" type="radio" name="tabs">
+    <label class="tab-label" for="tab4">RESULTS</label>
+	  
+  <section class="tab-section" id="content1">
+  {{#with singleModule}}
+  <p style="margin-bottom: -5px;"><strong>Mission Statement</strong></p>
+  	 <p>{{moduledescription}}</p>
+    <!--<p style="margin-bottom: -5px;"><strong>Vision Statement</strong></p>
+    <p>{{addschoolvision}}</p>-->
+	{{/with}}
+  </section>
+    
+  <section class="tab-section" id="content2">
+   {{#each course in courses}} 
+    <div class="row" style="margin-top: -20px;">
+    <!-- Begin Listing: 609 W GRAVERS LN-->
+      <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing card-1">
+          <div class="media">
+          {{#if imagepath }}
+            <a class="pull-left" href="/courses/{{slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="{{imagepath}}" style="width: 70px; height: 70px; object-fit: contain;"></a>
+          {{else}}
+              <a class="pull-left" href="/courses/{{slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="/images/book.png" style="width: 70px; height: 70px; object-fit: contain;"></a>
+          {{/if}}
+              <div class="clearfix visible-sm"></div>
+
+              <div class="media-body fnt-smaller">
+                  <a href="#" target="_parent"></a>
+                  <h4 class="media-heading"><a href="" target="_parent">{{course.title}}</a></h4>
+                  <p class="hidden-xs" style="margin-bottom: 5px; margin-top: -10px;">{{trimString course.about 0 110}}</p><span class="fnt-smaller fnt-lighter fnt-arial">{{course.dateCreated}}</span>
+              </div>
+          </div>
+      </div><!-- End Listing-->
+  </div>
+  {{/each}}
+
+  </section>
+    
+  <section class="tab-section" id="content3">
+   {{#each student in students}} 
+    <div class="row" style="margin-top: -20px;">
+     <!--Begin Listing: 609 W GRAVERS LN-->
+      <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing card-1">
+          <div class="media">
+          {{#if imagepath }}
+            <a class="pull-left" href="/student/{{slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="{{imagepath}}" style="width: 70px; height: 70px; object-fit: contain;"></a>
+          {{else}}
+              <a class="pull-left" href="/student/{{slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="/images/user_male_icon.png" style="width: 70px; height: 70px; object-fit: contain;"></a>
+          {{/if}}
+              <div class="clearfix visible-sm"></div>
+
+              <div class="media-body fnt-smaller">
+                  <a href="#" target="_parent"></a>
+                  <h4 class="media-heading"><a href="" target="_parent">{{student.firstname}}  {{student.lastname}}</a></h4>
+                  <p class="hidden-xs" style="margin-bottom: 5px; margin-top: -10px;">{{trimString student.useremail 0 110}}</p><span class="fnt-smaller fnt-lighter fnt-arial">{{course.createdAt}}</span>
+              </div>
+          </div>
+      </div><!--End Listing-->
+  </div>
+  {{/each}}
+  </section>
+
+  <section class="tab-section" id="content4">
+   
+  </section>
+    
+            	</main>
+            </div>        
+        </div><!-- End container -->
+	</div>
+	
+	{{else}}
+		<p>Loading...</p>
+	{{/if}}
+{{/if}}
+</template>

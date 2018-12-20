@@ -1,0 +1,23 @@
+<template name="dashboard">
+{{#if currentUser }}
+	<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main" style="margin-left: -350px;">
+						<div class="inner">
+							{{> headertheme }}
+							
+							{{> middle }}
+						</div>
+					</div>
+				<!-- Sidebar -->
+				
+				{{#if isInRole 'admin,super-admin' 'school-admin'}}
+					{{> sidebar }}
+				{{/if}} 
+				{{#if isInRole 'manage-team,student-page' 'student'}}
+					{{> studentsidebar }} 
+				{{/if}}
+			</div>
+{{/if}}
+</template>

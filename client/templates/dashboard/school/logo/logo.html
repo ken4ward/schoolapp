@@ -1,0 +1,153 @@
+<template name="logo">
+  	{{#if currentUser}}
+  	{{#if isInRole 'admin,super-admin' 'school-admin'}}
+	<form name="addschoollogo" id="addschoollogo" class="addschoollogo" enctype=“multipart/form-data”>
+		<p style="margin-top: -50px;"><h4><strong> Upload Logo / Extra Curricullum Activities & Facilities Available</strong></h4><h5></h5></p>
+		<div class="row uniform">
+			<div class="6u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="selectschool" id="selectschool">
+						{{#if OnlyUsersSchool}}	
+						<option value="">- Select School -</option>
+							{{#each OnlyUsersSchool}}
+								<option value="{{_id}}">{{addschoolname}}</option>
+							{{/each}}
+						{{/if}}
+					</select>
+				</div>
+			</div>
+			
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Academic" name="Academic" checked><label for="Academic">Academic Teams </label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Program" name="Program" checked><label for="Program">Theater Program</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Cultural" name="Cultural" checked><label for="Cultural">Cultural & Language</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Governing" name="Governing" checked><label for="Governing">Governing</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Leadership" name="Leadership" checked><label for="Leadership">Leadership Group</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Magazine" name="Magazine" checked><label for="Magazine">Magazine/journal</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Community" name="Community" checked><label for="Community">Community Choir</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Missionary" name="Missionary" checked><label for="Missionary">Missionary work</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Theater" name="Theater" checked><label for="Theater">Theater Group</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Christian" name="Christian" checked><label for="Christian">Christian Athletes</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Environmental" name="Environmental" checked><label for="Environmental">Environmental Club</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Choreography" name="Choreography" checked><label for="Choreography">Choreography</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Entrepreneurship" name="Entrepreneurship" checked><label for="Entrepreneurship">Entrepreneurship Club</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Horticulture" name="Horticulture" checked><label for="Horticulture">Horticulture Club</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Debate" name="Debate" checked><label for="Debate">Debate Association</label>
+			</div>
+			<div class="3u 12u$(small)">
+			<input type="checkbox" id="Volunteer" name="Volunteer" checked><label for="Volunteer">Volunteer Program</label>
+			</div>
+			<hr class="12u$" />
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Libraries" name="Libraries" checked><label for="Libraries">Libraries</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="ICT" name="ICT" checked><label for="ICT">ICT</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Play" name="Play" checked><label for="Play">Play Area</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Activity" name="Activity" checked><label for="Activity">Activity Room</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Auditorium" name="Auditorium" checked><label for="Auditorium">Auditorium</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Innovation" name="Innovation" checked><label for="Innovation">Innovation Studio</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id=Facilities name="Facilities" checked><label for="Facilities">Sports Facilities</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Art" name="Art" checked><label for="Art">Art Room</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Music" name="Music" checked><label for="Music">Music Hall</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Cafeteria" name="Cafeteria" checked><label for="Cafeteria">Cafeteria</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Store" name="Store" checked><label for="Store">Books Store</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Uniforms" name="Uniforms" checked><label for="Uniforms">Uniforms Store</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="First" name="First" checked><label for="First">First Aid Centre</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Creative" name="Creative" checked><label for="Creative">Creative Crafts Studio </label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Multipurpose" name="Multipurpose" checked><label for="Multipurpose">Multipurpose Hall</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="checkbox" id="Swimming" name="Swimming" checked><label for="Swimming">Swimming pool</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<label class="custom-file-upload"><input type="file" id="file-upload" style="display: none;" /> Upload School Logo</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<span id="filename" style="font-family: "></span>
+			</div>
+			<div class="6u 12u$(small)">
+				<ul class="actions">
+					<li><input type="submit" value="Add  School Details" class="special" /></li>
+					<li><input type="reset" value="Reset" /></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	{{else}}
+  {{accessDenied}}
+{{/if}}
+  {{else}}
+  {{notloggedIn}}
+	{{/if}}
+	<script type="text/javascript">
+      $(function () {
+        $('#file-upload:file').change(function () {
+          var filename = $(this).val();
+          $('#filename').text(filename);
+        })
+      });
+    </script>
+    <!--<script type="text/javascript">
+    	$(function () {
+    		$('#buttonupload').click(function () {
+    			$('#file-upload').trigger('click');
+    			$('#filename').text($('#file-upload:file').val());
+    		});
+    	});
+    </script> -->
+</template>

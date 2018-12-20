@@ -1,0 +1,86 @@
+<template name="viewadmin">
+	{{#if currentUser}}
+		 {{#if isInRole 'admin,super-admin' 'school-admin'}}
+		<div class="row uniform" style="margin-top: -70px;">
+			<div class="6u 12u$(xsmall)">
+				<p><h3><strong>My Profile Details</strong></h3></p>
+			</div>
+			{{#if Template.subscriptionsReady }}
+			{{#with schooladmin}}
+			<div class="6u$ 12u$(xsmall)">
+				<ul class="actions">
+					<!--<li><input type="submit" name="updatedetails" id="updatedetails" value="UPDATE RECORD" class="special" /></li>-->
+					<li>{{#if equals admin.status.active "1" }}<div class="circle active" style="width: 30px; height: 30px;"></div> {{else}}<div class="circle not-active" style="width: 30px; height: 30px;"></div>{{/if}}</li>
+					<li><input type="submit" name="updateadmin" id="updateadmin" value="Update Record" /></li>
+					<li><input type="submit" name="changepassword" id="changepassword" value="Change Password" /></li>
+				</ul>
+			</div>
+			
+			
+			<div class="table-wrapper" style="width: 100%; margin-top: 50px;">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Admin Email</td>
+							<td><strong>{{admin.personal.email}}</strong></td>
+							
+						</tr>
+						<tr>
+							<td>Admin Username</td>
+							<td><strong>{{adminUsername}}</strong></td>	
+						</tr>
+						<tr>
+							<td>First Name</td>
+							<td><strong>{{admin.personal.firstname}}</strong></td>
+							
+						</tr>
+						<tr>
+							<td>Last Name</td>
+							<td><strong>{{admin.personal.lastname}}</strong></td>
+						</tr>
+						<tr>
+							<td>Relationship</td>
+							<td><strong>{{admin.personal.relationship}}</strong></td>
+							
+						</tr>
+						<tr>
+							<td>Position</td>
+							<td><strong>{{admin.personal.worksat}}</strong></td>
+						</tr>
+						<tr>
+							<td>Phone</td>
+							<td><strong>{{admin.personal.phone}}</strong></td>
+						</tr>
+						<tr>
+							<td>Mobile Number</td>
+							<td><strong>{{admin.personal.mobile}}</strong></td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td><strong>{{num_street}}, {{geocomplete}}</strong></td>
+						</tr>
+						<tr>
+							<td>Facebook</td>
+							<td><strong><a href="{{admin.personal.social}}">{{admin.personal.social}}</a></strong></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			{{/with}}
+			{{else}}
+				<p>Loading...</p>
+			{{/if}}
+		</div>
+	{{else}}
+	{{accessDenied}}
+	{{/if}}
+	{{else}}
+  {{notloggedIn}}
+	{{/if}}
+</template>

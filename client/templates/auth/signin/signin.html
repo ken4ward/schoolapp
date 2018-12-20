@@ -1,0 +1,34 @@
+<template name="signin">
+    <div class="modal fade">
+        <div class="modal-dialog" id="signinModal" name="signinModal">
+            <div class="modal-content">
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-header">
+                    <h4 class="modal-title">SIGN IN</h4>
+                </div>
+                </div>
+                <form name="signin" id="signin" class="signin">
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-body">
+                
+                    <div class="form-group">
+                <input type="email" name="email" id="email" class="form-control formz" placeholder="Enter email" style="border-style: solid;border-color: #ff6666; border-width: 1px;" required="true">
+                    </div>
+                    <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control formz" minlength="6" maxlength="30" placeholder="Enter password" style="border-style: solid;border-color: #ff6666; border-width: 1px;" required="true">
+                    </div>
+                    <a href="#" style="font-size: 10px; margin-top: -30px;" id="forgotpassword" class="forgotpassword"><i> Forgot email or password?</i></a>
+                </div>
+                </div>
+                <div style="margin-left: 100px;margin-right: 100px;">  
+                <div class="modal-footer" >
+                    <button type="button" class="button signup" >Sign Up</button>
+                    <button type="submit" class="special" >Sign In <i class="fa fa-spinner" aria-hidden="true" style="display:none"></i></button>
+                    <button type="button" class="button" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

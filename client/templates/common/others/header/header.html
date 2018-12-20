@@ -1,0 +1,71 @@
+<template name="headertheme">
+	<!-- Header -->
+	<header id="header">
+		<!--<a href="#" class="logo" style="margin-bottom: -80px;"><strong><h2 style="text-decoration: ;">SCHOLAR VISION</h2></strong></a>-->
+    {{#animate type="zoomInDown" delay="200"}}
+    <strong><h2 style="margin-bottom: -110px;">SCHOLAR VISION</h2></strong>
+    {{/animate}}
+		<ul class="icons">
+		{{#if currentUser}}
+			<li>
+                                          
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{currentUser.username}} 
+    <span class="caret"></span></button>
+    	  <ul class="dropdown-menu">
+      <li><a tabindex="-1" href="/">Home</a></li>
+      <li><a tabindex="-1" href="#" id="signout" name="signout">Sign out</a></li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Dashboard<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="/userview">View Profile</a></li>
+          <li><a tabindex="-1" href="/myprofile">Update Profile</a></li>
+           <!-- <li class="dropdown-submenu">
+            <a class="test" href="#">Another dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">3rd level dropdown</a></li>
+              <li><a href="#">3rd level dropdown</a></li>
+            </ul>
+             </li>-->
+        </ul>
+        <a class="test" tabindex="-1" href="#">School<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="/school/basic">Add School</a></li>
+          <li><a tabindex="-1" href="/address/school">Update Address</a></li>
+          <li><a tabindex="-1" href="/logo/school">Update Others</a></li>
+        </ul>
+        <a class="test" tabindex="-1" href="#">Course<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="#">Add Course</a></li>
+          <li><a tabindex="-1" href="/courses">View Courses</a></li>
+        </ul>
+        <a class="test" tabindex="-1" href="#">Student<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="/students">Add Students</a></li>
+        </ul>
+      </li>
+    </ul>
+</div>
+	        </li>
+		{{else}}
+			<li><a href="#" class="button" id="signup" name="signup">SIGN UP</a> </li>
+			<li><a href="#" class="button" id="signin" name="signin">SIGN IN</a></li>
+		{{/if}}
+			<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+			<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+		</ul>
+	</header>
+  <script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
+</template>
+

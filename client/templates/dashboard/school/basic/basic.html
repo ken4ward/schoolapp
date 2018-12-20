@@ -1,0 +1,108 @@
+<template name="basic">
+{{#if currentUser}}
+{{#if isInRole 'admin,super-admin' 'school-admin'}}
+	<form name="addschool" id="addschool" class="addschool">
+		<p style="margin-top: -50px;"><h4><strong> School Basic details</strong></h4><h5></h5></p>
+		<div class="row uniform">
+			<div class="3u 12u$(small)">
+				<input type="radio" id="demo-priority-low" name="conventional" value="conventional" checked><label for="demo-priority-low">Conventional</label>
+			</div>
+			<div class="3u 12u$(small)">
+			<input type="radio" id="demo-priority-normal" name="conventional" value="nonconventional"><label for="demo-priority-normal">Non Conventional</label>
+			</div>
+			<div class="3u 12u$(small)">
+				<input type="radio" id="demo-priority-lows" name="registered" value="registered" checked><label for="demo-priority-lows">Registered?</label>
+			</div>
+			<div class="3u 12u$(small)">
+			<input type="radio" id="demo-priority-normals" name="registered" value="notregistered"><label for="demo-priority-normals">Not Registered?</label>
+			</div>
+			<div class="6u 12u$(xsmall)">
+				<input type="text" name="schoolname" id="schoolname" value="" placeholder="School Name" minlength="10" maxlength="50" required="true" />
+			</div>
+			<div class="6u$ 12u$(xsmall)">
+				<input type="text" name="schoolmotto" id="schoolmotto" value="" placeholder="School Motto" minlength="10" maxlength="100" required="true" />
+			</div>
+			<div class="6u 12u$(xsmall)">
+				<textarea name="schoolmission" id="schoolmission" placeholder="Enter School mission statement" rows="6" minlength="100" maxlength="200" required="true"></textarea>
+			</div>
+			<div class="6u 12u$(xsmall)">
+				<textarea name="schoolvision" id="schoolvision" placeholder="Enter School vision statement" rows="6" minlength="100" maxlength="200" required="true"></textarea>
+			</div>
+			<!-- Break -->
+			<div class="4u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="schooltype" id="schooltype" class="required">
+						<option value="">- Type -</option>
+					  <optgroup label="Elementary">
+					    <option value="Kindergerten">Kindergerten</option>
+					    <option value="Primary">Primary</option>
+					  </optgroup>
+					  <optgroup label="Mid-Level">
+					    <option value="Secondary">Secondary</option>
+					    <option value="Technical">Technical</option>
+					  </optgroup>
+					  <optgroup label="Tertiary">
+					    <option value="College of Education">College of Education</option>
+					    <option value="Polytechnics">Polytechnics</option>
+					    <option value="University">University</option>
+					    <option value="School of Nursing">School of Nursing</option>
+					  </optgroup>
+					  <optgroup label="Professionals">
+					    <option value="School of Project Management">School of Project Management</option>
+					    <option value="School of Fishery">School of Fishery</option>
+					   </optgroup>
+					  <option value="Not Applicable">Not Applicable</option>
+					</select>
+				</div>
+			</div>
+			<div class="4u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="feerange" id="feerange">
+						<option value="">- Fee Range -</option>
+						<option value="No Tuition Fee">No Tuition Fee</option>
+						<option value="Less than 50000">Less than 50000</option>
+						<option value="0 - 50000">0 - 50000</option>
+					    <option value="50000 - 100000">50000 - 100000</option>
+					    <option value="100000 - 500000">100000 - 500000</option>
+					    <option value="500000 - 1000000">500000 - 1000000</option>
+					    <option value="1000000 - 2000000">1000000 - 2000000</option>
+					    <option value="More than 2000000">More than 2000000</option>
+					</select>
+				</div>
+			</div>
+			<div class="4u 12u$(small)">
+				<div class="select-wrapper">
+					<select name="curriculum" id="curriculum">
+						<option value="">- Curriculum -</option>
+						<option value="British">British</option>
+					    <option value="BritishNigerian">British Nigerian</option>
+					    <option value="AmericanNigerian"><i>American Nigerian</i></option>
+					    <option value="Montesorri">Montesorri</option>
+					    <option value="Nigerian">Nigerian</option>
+					    <option value="French">French</option>
+					    <option value="Canadian">Canadian English</option>
+					    <option value="Saudi Nigerian">Saudi Nigerian</option>
+					    <option value="Custom">Custom</option>
+					    <option value="Not Applicable">Not Applicable</option>
+					</select>
+				</div>
+			</div>
+			
+			<!-- Break -->
+			
+			<!-- Break -->
+			<div class="12u$">
+				<ul class="actions">
+					<li><input type="submit" value="Add  School" class="special" /></li>
+					<li><input type="reset" value="Reset" /></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	{{else}}
+  {{accessDenied}}
+{{/if}}
+  {{else}}
+  {{notloggedIn}}
+{{/if}}
+</template>

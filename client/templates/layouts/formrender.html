@@ -1,0 +1,17 @@
+<template name="formrender">
+	<!-- Wrapper -->
+	{{> bertAlert}}
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main" style="margin-left: -350px;">
+						<div class="inner">
+							{{> headertheme }}
+							<section>
+								{{> Template.dynamic template=formrend}}
+							</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					{{> sidebar }} 
+			</div>
+</template>

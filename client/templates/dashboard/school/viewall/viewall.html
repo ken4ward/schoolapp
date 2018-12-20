@@ -1,0 +1,62 @@
+<template name="myviews">
+	{{#if currentUser}}
+    {{#if isInRole 'admin,super-admin' 'school-admin'}}
+	<div class="row uniform" style="margin-top: -50px;">
+		<div class="container-pad" id="property-listings">
+            <div class="row">
+                {{#if RenderSchool }}
+                	{{#each RenderSchool}}
+                    <!-- Begin Listing: 609 W GRAVERS LN-->
+                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing card-1">
+                        <div class="media">
+                        {{#if imagepath }}
+                        	<a class="pull-left" href="/school/{{slug}}" target="_parent">
+                            <img alt="image" class="img-responsive" src="{{imagepath}}" style="width: 100px; height: 100px; object-fit: contain;"></a>
+                        {{else}}
+                            <a class="pull-left" href="/school/{{slug}}" target="_parent">
+                            <img alt="image" class="img-responsive" src="/images/logo.png" style="width: 100px; height: 100px; object-fit: contain;"></a>
+                        {{/if}}
+                            <div class="clearfix visible-sm"></div>
+
+                            <div class="media-body fnt-smaller">
+                                <h4 class="media-heading">
+                                  <a href="/school/{{slug}}" target="_parent">{{addschoolname}}</a><small class="pull-right"><p><label id="updateschool" name="updateschool"><h4>Update</h4></label></p> {{ createAt}}</small></h4>
+
+
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li><strong> {{mobile}}</strong></li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li><strong>{{email}}</strong></li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li><strong>{{num_street}}  {{ geocomplete }}</strong></li>
+                                </ul>
+
+                                <p class="hidden-xs" style="margin-bottom: 5px; margin-top: -10px;">{{trimString addschoolmission 0 240}}</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Chestnut Hill
+                                Evergreen</span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                    {{/each}}
+                    {{/if}}
+                
+
+                </div>
+
+                
+        </div><!-- End container -->
+	</div>
+    <ul class="pager">
+        <li class="previous"><a href="">Previous</a> </li>
+        <li class="next"><a href="">Next</a> </li>
+    </ul>
+    {{else}}
+  {{accessDenied}}
+{{/if}}
+  {{else}}
+  {{notloggedIn}}
+{{/if}}
+</template>

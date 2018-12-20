@@ -1,0 +1,84 @@
+<template name="studentdashboard">
+	{{#if currentUser}}
+		<div class="row uniform" style="margin-top: -70px;">
+			<div class="6u 12u$(xsmall)">
+				<p><h3><strong>My Profile Details</strong></h3></p>
+			</div>
+			<div class="6u$ 12u$(xsmall)">
+				<ul class="actions">
+					<li><input type="submit" name="updatedetails" id="updatedetails" value="UPDATE RECORD" class="special" /></li>
+					<li><input type="submit" name="changepassword" id="changepassword" value="Change Password" /></li>
+				</ul>
+			</div>
+			<div class="1u 12u$(xsmall)">
+				Username:
+			</div>
+			<div class="5u$ 12u$(xsmall)">
+				<h2>{{currentUser.username}}</h2>
+			</div>
+			{{#if Template.subscriptionsReady }}
+			{{#with StudentDetails}}
+	
+			<div class="1u 12u$(xsmall)">
+				Email: 
+			</div>
+			<div class="5u$ 12u$(xsmall)">
+				<h2>{{useremail}}</h2>
+			</div>
+			<hr>
+			
+			<div class="table-wrapper" style="width: 100%; margin-top: -50px;">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>First Name</td>
+							<td><strong>{{firstname}}</strong></td>
+						</tr>
+						<tr>
+							<td>Last Name</td>
+							<td><strong>{{lastname}}</strong></td>
+						</tr>
+						<tr>
+							<td>Mobile Number</td>
+							<td><strong>{{mobile}}</strong></td>
+						</tr>
+						
+						{{#if Template.subscriptionsReady }}
+						{{#with StudentSocial}}
+						<tr>
+							<td>Address</td>
+							<td><strong>{{usernum_street}}, {{addgeocomplete}}</strong></td>
+						</tr>
+						<tr>
+							<td>middle Name</td>
+							<td><strong>{{userFirstname}}</strong></td>
+						</tr>
+						<tr>
+							<td>Nick Name</td>
+							<td><strong>{{userlastname}}</strong></td>
+						</tr>
+						<tr>
+							<td>Facebook</td>
+							<td><strong><a href="{{userfacebook}}">{{userfacebook}}</a></strong></td>
+						</tr>
+						{{/with}}
+						{{else}}
+							<p>Loading...</p>
+						{{/if}}
+					</tbody>
+				</table>
+			</div>
+			{{/with}}
+			{{else}}
+				<p>Loading...</p>
+			{{/if}}
+		</div>
+	
+	{{/if}}
+</template>

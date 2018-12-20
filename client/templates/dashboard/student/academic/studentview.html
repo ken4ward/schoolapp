@@ -1,0 +1,235 @@
+<template name="studentview">
+	
+	{{#if currentUser}}
+	{{#if Template.subscriptionsReady }}
+	
+	
+	<div class="row uniform" style="margin-top: -90px;">
+		<div class="container-pad" id="property-listings">
+		
+            <div class="row">
+            	<main class="tab-main">
+            		<div class="row">
+            		{{#with singleSchool}}
+						<div class="col-md-7">
+							<input type="hidden" name="schoolId" id="schoolId" value="{{singleSchool._id}}">
+							<a href="#"><h2><i class="fa fa-graduation-cap" aria-hidden="true">{{singleSchool.addschoolname}}</i></h2> </a> 
+						</div>
+						<div class="col-md-1">
+							<a href="#"><h5>({{singleSchool.addconventional}}) </h5> </a>
+						</div>
+						{{/with}}
+					</div>
+					
+
+		<input  class="tab-input" id="tab1" type="radio" name="tabs" checked>
+	  <label class="tab-label" for="tab1">DETAILS</label>
+	    
+	  <input class="tab-input" id="tab2" type="radio" name="tabs">
+	  <label  class="tab-label" for="tab2">MODULES</label>
+	    
+	  <input class="tab-input" id="tab3" type="radio" name="tabs">
+	  <label class="tab-label" for="tab3">COURSES</label>
+	    
+	  <input class="tab-input" id="tab4" type="radio" name="tabs">
+	  <label class="tab-label" for="tab4">COURSE MATES</label>
+    
+  <section class="tab-section" id="content1">
+  {{#with singleSchool}}
+  <p style="margin-bottom: -5px;"><strong>Mission Statement</strong></p>
+    <p>{{addschoolmission}}</p>
+    <p style="margin-bottom: -5px;"><strong>Vision Statement</strong></p>
+    <p>{{addschoolvision}}</p>
+    <br>
+    <br>
+    	<div class="table-wrapper" style="width: 100%; margin-top: -50px;">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Name</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Motto</td>
+							<td><strong>{{addschoolmotto}}</strong></td>
+							<td>Type</td>
+							<td><strong>{{addschooltype}}</strong></td>
+						</tr>
+						<tr>
+							<td>Fee Range</td>
+							<td><strong>{{addfeerange}}</strong></td>
+							<td>Curriculum</td>
+							<td><strong>{{addcurriculum}}</strong></td>
+						</tr>
+						<tr>
+							<td>Contact Number</td>
+							<td><strong>{{phone}}</strong></td>
+							<td>Unit</td>
+							<td><strong>{{unit}}</strong></td>
+						</tr>
+						<tr>
+							<td>Branch/HQ</td>
+							<td><strong>{{branches}}</strong></td>
+							<td>Email</td>
+							<td><strong>{{email}}</strong></td>
+						</tr>
+						<tr>
+							<td>Mobile Number</td>
+							<td><strong>{{mobile}}, {{phone}} </strong></td>
+							<td></td>
+							<td><strong>{{phone}}</strong></td>
+						</tr>
+						<tr>
+							<td >Website</td>
+							<td colspan="4"><strong><a href="{{addschoolwebiste}}">{{schoolwebiste}}</a></strong></td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td colspan="4"><strong>{{num_street}}, {{geocomplete}} </strong></td>
+						</tr>
+						<tr>
+							<td colspan="4"></td>
+						</tr>
+						<tr>
+							<td><strong>{{Program}}</strong></td>
+							<td><strong>{{Academic}}</strong></td>
+							<td><strong>{{Cultural}}</strong></td>
+							<td><strong>{{Governing}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>{{Leadership}}</strong></td>
+							<td><strong>{{Magazine}}</strong></td>
+							<td><strong>{{Community}}</strong></td>
+							<td><strong>{{Missionary}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>{{Theater}}</strong></td>
+							<td><strong>{{Christian}}</strong></td>
+							<td><strong>{{Environmental}}</strong></td>
+							<td><strong>{{Choreography}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>{{Entrepreneurship}}</strong></td>
+							<td><strong>{{Horticulture}}</strong></td>
+							<td><strong>{{Debate}}</strong></td>
+							<td><strong>{{Volunteer}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>{{Libraries}}</strong></td>
+							<td><strong>{{ICT}}</strong></td>
+							<td><strong>{{Play}}</strong></td>
+							<td><strong>{{Activity}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>{{Auditorium}}</strong></td>
+							<td><strong>{{Innovation}}</strong></td>
+							<td><strong>{{Facilities}}</strong></td>
+							<td><strong>{{Art}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>{{Music}}</strong></td>
+							<td><strong>{{Cafeteria}}</strong></td>
+							<td><strong>{{Store}}</strong></td>
+							<td><strong>{{Uniforms}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>{{First}}</strong></td>
+							<td><strong>{{Creative}}</strong></td>
+							<td><strong>{{Multipurpose}}</strong></td>
+							<td><strong>{{Swimming}}</strong></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			{{/with}}
+  </section>
+    
+  <section class="tab-section" id="content2">
+   {{#each module in modules}} 
+    <div class="row" style="margin-top: -20px;">
+    <!-- Begin Listing: 609 W GRAVERS LN-->
+      <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing card-1">
+          <div class="media">
+          {{#if imagepath }}
+            <a class="pull-left" href="/modules/{{module.slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="{{imagepath}}" style="width: 70px; height: 70px; object-fit: contain;"></a>
+          {{else}}
+              <a class="pull-left" href="/modules/{{module.slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="/images/library.png" style="width: 70px; height: 70px; object-fit: contain;"></a>
+          {{/if}}
+              <div class="clearfix visible-sm"></div>
+
+              <div class="media-body fnt-smaller">
+                  <a href="#" target="_parent"></a>
+                  <h4 class="media-heading"><a href="" target="_parent">{{module.modulename}}</a></h4>
+                  <p class="hidden-xs" style="margin-bottom: 5px; margin-top: -10px;">{{trimString module.moduledescription 0 110}}</p><span class="fnt-smaller fnt-lighter fnt-arial">{{module.createdAt}}</span>
+              </div>
+          </div>
+      </div><!-- End Listing-->
+  </div>
+  {{/each}}
+  </section>
+    
+  <section class="tab-section" id="content3">
+    {{#each course in courses}} 
+    
+  <div class="row" style="margin-top: -20px;">
+    <!-- Begin Listing: 609 W GRAVERS LN-->
+      <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing card-1">
+          <div class="media">
+          {{#if imagepath }}
+            <a class="pull-left" href="/courses/{{course.slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="{{imagepath}}" style="width: 20px; height: 20px; object-fit: contain;"></a>
+          {{else}}
+              <a class="pull-left" href="/courses/{{course.slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="/images/user_male_icon.png" style="width: 20px; height: 20px; object-fit: contain;"></a>
+          {{/if}}
+              
+              <div class="media-body fnt-smaller">
+                  <a href="#" target="_parent"></a>
+                  <h4 class="media-heading"><a href="" target="_parent">{{course.title}}</a> </h4> | <em>{{trimString course.about 0 80}}</em>
+              </div>
+          </div>
+      </div><!-- End Listing-->
+  </div>
+  {{/each}}
+  </section>
+    
+  <section class="tab-section" id="content4">
+    {{#each student in courseMates}} 
+    <div class="row" style="margin-top: 0px;">
+    <!-- Begin Listing: 609 W GRAVERS LN-->
+      <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing card-1">
+          <div class="media">
+          {{#if imagepath }}
+            <a class="pull-left" href="/courses/{{student.slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="{{imagepath}}" style="width: 20px; height: 20px; object-fit: contain;"></a>
+          {{else}}
+              <a class="pull-left" href="/courses/{{student.slug}}" target="_parent">
+              <img alt="image" class="img-responsive" src="/images/user_male_icon.png" style="width: 20px; height: 20px; object-fit: contain;"></a>
+          {{/if}}
+              
+              <div class="media-body fnt-smaller">
+                  <a href="#" target="_parent"></a>
+                  <h4 class="media-heading"><a href="" target="_parent">{{student.firstname}}  {{student.lastname}}</a> | <em>{{trimString student.useremail 0 110}}</em></h4>
+              </div>
+          </div>
+      </div><!-- End Listing-->
+  </div>
+  {{/each}}
+  </section>
+    
+            	</main>
+            </div>        
+        </div><!-- End container -->
+	</div>
+	
+	{{else}}
+		<p>Loading...</p>
+	{{/if}}
+{{/if}}
+</template>

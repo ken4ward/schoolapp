@@ -1,0 +1,39 @@
+<template name="studentdialog">
+    {{#if currentUser}}
+    {{#if isInRole 'admin,super-admin' 'school-admin'}}
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create / Select Module</h4>
+                </div>
+                <div class="modal-body"> 
+                	<section>
+                        <div>
+                            <div style="margin-left: 13px; margin-bottom: -10px;"><h5><strong>ADD TO SELECTED SCHOOL</strong></h5></div>
+                            <form name="selectedSchool" class="selectedSchool" id="selectedSchool">
+                               
+                                <div class="container" style="width: 100%; overflow-y: scroll; height:80%;">
+                                  <ul class="list-group">
+                                    {{#each UserModules}}
+                                        <li class="list-group-item" style="font-size: 12px; margin-bottom: -10px;">
+                                            <input type="radio" id="{{_id}}" name="modulestudent" value="{{_id}}">
+                                            <label for="{{_id}}"><strong>{{modulename}}</strong></label>
+                                        </li>
+                                    {{/each}}
+                                  </ul>
+                                </div>  
+                            </form>
+                        </div>   
+                    </section>  
+                </div>
+                <div class="modal-footer">
+                    <button name="addstudent" id="addstudent" class="special addstudent">ADD STUDENTS</button>          
+                    <button type="button" class="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/if}}
+</template>

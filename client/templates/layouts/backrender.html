@@ -1,0 +1,8 @@
+<template name="backrender">
+{{# if currentUser}}
+  {{> bertAlert}} 
+   {{> Template.dynamic template=back}}
+{{else}}
+  
+{{/ if}}
+</template>
